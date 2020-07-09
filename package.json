@@ -6,6 +6,7 @@
   "scripts": {
     "test": "test",
     "build": "rm -rf dist && NODE_ENV=development webpack",
+    "dev": "yarn watch",
     "watch": "rm -rf dist && NODE_ENV=development webpack -w & nodemon",
     "start": "node dist/index.js"
   },
