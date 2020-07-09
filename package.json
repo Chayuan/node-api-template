@@ -2,10 +2,11 @@
   "name": "api-template",
   "version": "1.0.0",
   "description": "node api template",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "test",
     "build": "rm -rf dist && NODE_ENV=development webpack",
+    "watch": "rm -rf dist && NODE_ENV=development webpack -w & nodemon",
     "start": "node dist/index.js"
   },
   "repository": {
@@ -33,6 +34,7 @@
     "@typescript-eslint/parser": "3.3.0",
     "babel-loader": "8.1.0",
     "eslint": "7.2.0",
+    "nodemon": "2.0.4",
     "ts-loader": "7.0.5",
     "typescript": "3.9.5",
     "webpack": "4.43.0",
@@ -40,7 +42,7 @@
     "webpack-node-externals": "1.7.2"
   },
   "dependencies": {
-    "dotenv": "^8.2.0",
+    "dotenv": "8.2.0",
     "express": "4.17.1",
     "mongoose": "5.9.22"
   }
