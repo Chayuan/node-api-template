@@ -1,7 +1,22 @@
 import express from 'express';
+import dotenv from 'dotenv';
+import initDatabase from './db';
 
-const app = express();
 
-app.listen(3000, () => {
-    console.log('Server running and listening on port 3000');
-});
+const startServer = async (): Promise<void> => {
+    try {
+        dotenv.config();
+        const app = express();
+
+        await initDatabase();
+
+        app.listen(process.env.PORT, () => {
+            console.log(`Server listening on port ${process.env.PORT}`);
+        });
+    } catch (error) {
+        console.log('Error starting server');
+        console.log(error);
+    }
+};
+
+startServer();
