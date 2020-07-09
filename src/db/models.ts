@@ -6,7 +6,6 @@ const initializedModels = {};
 
 const getModel = (modelName: string): Model => {
     if (initializedModels[modelName]) {
-        // le model est déjà créé
         return initializedModels[modelName];
     }
 
@@ -17,7 +16,6 @@ const getModel = (modelName: string): Model => {
     console.log(`Creation du model pour ${modelName}...`);
     const model = database.model(schema.collection, schema.definition, schema.collection);
 
-    // on stocke le model qu'on vient de créer
     initializedModels[modelName] = model;
 
     return model;

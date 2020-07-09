@@ -17,7 +17,8 @@ export default async (): Promise<any> => {
 
             database.on('error', error => {
                 mongoose.disconnect();
-                reject(error);
+                console.log(error);
+                process.exit(1);
             });
 
             database.once('open', () => {
