@@ -8,13 +8,11 @@ interface ICustomSchema {
 const citiesSchema: ICustomSchema = {
     collection: 'cities',
     definition: new Schema({
-        _id: String,
-        Title: String,
-        Year: Number,
-        genres: [String],
-        Country: String,
-        Actors: String,
-        Director: String
+        name: {  type: String, required: true },
+        latlng: {
+            lat: {  type: String, required: true },
+            lng: {  type: String, required: true }
+        }
     })
 };
 

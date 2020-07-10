@@ -6,9 +6,10 @@ interface IProps {
 }
 
 export interface IController {
-    getById(id: number): any
-    getById(id: number): any
-    getAll(): any
+    getModel(): any
+    getById(id: number): Promise<any>
+    getAll(): Promise<any>
+    create(data: object): Promise<any>
 }
 
 class AbstractController implements IController {
@@ -22,6 +23,10 @@ class AbstractController implements IController {
         this.model = getModel(this.modelName);
     }
 
+     getModel(): any {
+        return this.model;
+    }
+
     async getById (id: number): Promise<any> {
         const document = await this.model.findById(id);
         return document;
@@ -30,6 +35,12 @@ class AbstractController implements IController {
     async getAll (): Promise<Document[]> {
         const documents = await this.model.find({});
         return documents;
+    }
+
+    async create(data): Promise<any> {
+        const object = new this.model(data);
+        const insertedObject = await object.save();
+        return insertedObject;
     }
 }
 
