@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose, { Connection } from 'mongoose';
 
-export let database;
+export let database: Connection;
 
-export default async (): Promise<any> => {
+export default async (): Promise<void> => {
     return new Promise((resolve, reject) => {
         try {
             if (!process.env.MONGO_URL) {
@@ -12,7 +12,7 @@ export default async (): Promise<any> => {
             database = mongoose.connection;
 
             database.on('connection', () => {
-                console.log('Connecting to the databse...');
+                console.log('Connecting to the database...');
             });
 
             database.on('error', error => {
